@@ -2,9 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
-import Registration from './Components/Registration/Registration.jsx';
 import Registration2 from './Components/Registration2/Registration2.jsx';
-import RegistrationDummy from './Components/Registration/RegistrationDummy.jsx';
 import Home from './Components/Home/Home.jsx';
 import LogIn from './Components/Authentication/LogIn.jsx';
 import AuthProvider from './Components/Authentication/AuthProvider.jsx';
@@ -21,26 +19,26 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <LandingPage />
+        element: <Registration2 />
       },
-      {
-        path: '/studentForm',
+      // {
+        // path: '/studentForm',
         // element: <Registration/>
         // element:<RegistrationDummy/>
-        element: <Registration2 />,
-      },
-      {
-        path: 'logIn',
-        element: <LogIn />
-      },
-      {
-        path: 'registrations',
-        element: <PrivateRoute><RegistrationList /></PrivateRoute>
-      },
-      {
-        path: '/singleRegistration/:id',
-        element: <PrivateRoute><SingleRegistration /></PrivateRoute>
-      }
+        // element: <Registration2 />,
+      // },
+      // {
+      //   path: 'logIn',
+      //   element: <LogIn />
+      // },
+      // {
+      //   path: 'registrations',
+      //   element: <PrivateRoute><RegistrationList /></PrivateRoute>
+      // },
+      // {
+      //   path: '/singleRegistration/:id',
+      //   element: <PrivateRoute><SingleRegistration /></PrivateRoute>
+      // }
 
     ]
   },

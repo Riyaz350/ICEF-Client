@@ -1,5 +1,5 @@
 
-const Form2 = ({ int, label, state, setState, placeholder, selected, setSelected, errors, setErrors,type, value }) => {
+const Form1 = ({ int, label, state, setState, placeholder, selected, setSelected, errors, setErrors,type, value }) => {
 
     const Field = () => {
         return (<div className="label">
@@ -21,7 +21,6 @@ const Form2 = ({ int, label, state, setState, placeholder, selected, setSelected
             <div className={`border-2 rounded-lg   ${errors?.includes(int) ? ' border-red-500 focus:border-red-500' : selected == int ? 'border-purple-500' : 'border-gray-400'}`}>
                 <input onFocus={() => setSelected(int)} onBlur={() => {
                     setSelected(0)
-                    !state.trim() && addError(int )
                 }} onChange={e => {
                     setSelected(int)
                     setErrors((prevItems) => prevItems.filter(item => item !== int))
@@ -33,4 +32,4 @@ const Form2 = ({ int, label, state, setState, placeholder, selected, setSelected
     );
 };
 
-export default Form2;
+export default Form1;
