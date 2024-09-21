@@ -50,7 +50,9 @@ const ThirdForm = ({ setSerial: setPageNo, pageNo, setDocuments, firstFormData, 
     .then(res => {
       if (res.status === 200) {
         Swal.fire({ position: "top-end", icon: "success", title: "Success",text: `Thank You for submitting your form ${firstFormData?.firstName} ${firstFormData?.lastName}`, showConfirmButton: false, timer: 1500 });
-
+        setTimeout(() => {
+          location.reload();
+        }, 2000);
       }})
     }
 

@@ -50,7 +50,7 @@ const SecondForm = ({ pageNo, setPageNo, setSecondFormData }) => {
                 <Form2 int={3} label='City' state={city} setState={setCity} placeholder='London' selected={selected} setSelected={setSelected} errors={errors} setErrors={setErrors} type={'text'} />
                 <Form2 int={4} label='Post Code' state={postCode} setState={setPostCode} placeholder='1234' selected={selected} setSelected={setSelected} errors={errors} setErrors={setErrors} type={'text'} />
                 <Form2 int={5} label='Country' state={country} setState={setCountry} placeholder='UK' selected={selected} setSelected={setSelected} errors={errors} setErrors={setErrors} type={'text'} />
-                <Form2 int={6} label='Country' state={recruitCountry} setState={setRecruitCountry} placeholder='UK' selected={selected} setSelected={setSelected} errors={errors} setErrors={setErrors} type={'text'} />
+                <Form2 int={6} label='Country you recruit form ' state={recruitCountry} setState={setRecruitCountry} placeholder='UK' selected={selected} setSelected={setSelected} errors={errors} setErrors={setErrors} type={'text'} />
 
                 <div className='flex gap-20'>
                     <button onClick={() => setPageNo(pageNo - 1)} className="  w-full lg:ml-auto btn-primary text-base lg:text-lg text-white bg-[#7367f0] hover:bg-[#675dd8] rounded-xl p-2 my-10 font-bold">Previous</button>
