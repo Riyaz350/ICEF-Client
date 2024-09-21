@@ -6,7 +6,7 @@ import DocumentViewer from './Viewers/DocumentViewer';
 import useAxiosPublic from '../Hooks/useAxiosPublic';
 import Swal from 'sweetalert2';
 
-const ThirdForm = ({ setSerial: setPageNo, pageNo, setDocuments, firstFormData, secondFormData }) => {
+const ThirdForm = ({   setPageNo, pageNo, setDocuments, firstFormData, secondFormData }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [fileData, setFileData] = useState([])
   console.log(fileData)
@@ -84,8 +84,8 @@ const ThirdForm = ({ setSerial: setPageNo, pageNo, setDocuments, firstFormData, 
         </div>
 
         {pageNo &&
-          <div className="flex justify-between">
-            {/* <button onClick={() => setPageNo(pageNo - 1)} className="btn bg-gray-400 text-lg text-white  font-bold">Back</button> */}
+          <div className="flex gap-20">
+            <button onClick={() => setPageNo(pageNo - 1)} className="btn bg-gray-400 text-lg text-white  font-bold">Back</button>
             <button onClick={() => submitForm()} className="btn btn-primary text-lg text-white  font-bold">Submit</button>
           </div>
         }

@@ -31,9 +31,7 @@ const SecondForm = ({ pageNo, setPageNo, setSecondFormData }) => {
 
         if (errors.length === 0 && companyName && address && city && postCode && country && recruitCountry) {
             setPageNo(pageNo + 1)
-        } else {
-            alert('fuck')
-        }
+        } 
     }
     useEffect(() => {
         const data = {   companyName, address, city, website };
