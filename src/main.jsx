@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ReadDoc from './Components/ReadDoc/ReadDoc.jsx';
 import LogIn from './Components/Authentication/LogIn.jsx';
 import PrivateRoute from './Components/Hooks/PrivateRoutes.jsx';
+import Form from './Components/Registration2/Form.jsx';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Registration2 />
+        element: <Form/>
       },
       // {
         // path: '/studentForm',

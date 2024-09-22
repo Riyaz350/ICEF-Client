@@ -6,28 +6,14 @@ import DocumentViewer from './Viewers/DocumentViewer';
 import useAxiosPublic from '../Hooks/useAxiosPublic';
 import Swal from 'sweetalert2';
 import { extractDateTime } from '../Tools/Time';
-import FileUpload from './FileUpload';
 
 const ThirdForm = ({ setPageNo, pageNo, setDocuments, firstFormData, secondFormData, errors, setErrors }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [fileData, setFileData] = useState(null)
   const time = extractDateTime();
   const axiosPublic = useAxiosPublic()
-
   const handleFileUpload = (e) => {
-    // const file = e.target.files[0]
-    setFileData(e.target.files[0])
-    // if (file?.type?.startsWith('image/') || file?.type?.startsWith('application/pdf')) {
-    //   const reader = new FileReader();
-    //   reader.onloadend = () => {
-    //     const base64String = reader.result.split(',')[1];
-    //     setFileData(prevFiles => [...prevFiles, { string: base64String, name: file.name, type: file.type }]);
-    //   };
-    //   reader.readAsDataURL(file);
-    // } else {
-    //   alert('Please upload a pdf or image')
-    // }
-    console.log(fileData)
+    setFileData(e.target.files)
   };
 
   const handleDragEnter = (e) => {
@@ -56,29 +42,15 @@ const ThirdForm = ({ setPageNo, pageNo, setDocuments, firstFormData, secondFormD
     setErrors(prevErrors => [...prevErrors, e]);
   };
 
-
-
+  // const formData = new FormData()
+  // formData.append("firstName", firstFormData?.firstName);
+  // formData.append("lastName", firstFormData?.lastName);
+  // formData.append("email", firstFormData?.email);
+  // formData.append("email", firstFormData?.mobileNo);
 
 
   const submitForm = (e) => {
     e.preventDefault()
-    setFileData(e.target.files[0])
-    console.log(e.target.files)
-    const formData = new FormData()
-    formData.append("firstName", firstFormData?.firstName);
-    formData.append("lastName", firstFormData?.lastName);
-    formData.append("email", firstFormData?.email);
-    formData.append("mobileNo", firstFormData?.mobileNo);
-    formData.append("whatsAppNo", firstFormData?.whatsAppNo);
-    formData.append("password", firstFormData?.password);
-    formData.append("companyDetails", secondFormData);
-    if (fileData) {
-      console.log(fileData)
-      formData.append("file", fileData); // Single file
-    }
-    for (const [key, value] of formData.entries()) {
-      console.log(`${key}: ${value}`);
-    }
     if (!firstFormData.firstName) addError(1);
     if (!firstFormData.lastName) addError(2);
     if (!firstFormData.email) addError(3);
@@ -96,16 +68,22 @@ const ThirdForm = ({ setPageNo, pageNo, setDocuments, firstFormData, secondFormD
     if (!secondFormData.recruitCountry) addError(13);
 
     if (errors.length === 0 && firstFormData.firstName && firstFormData.lastName && firstFormData.email && firstFormData.mobileNo && firstFormData.password && firstFormData.password == firstFormData.rePassword
-      && secondFormData.companyName && secondFormData.address && secondFormData.city && secondFormData.postCode && secondFormData.country && secondFormData.recruitCountry
+      && secondFormData.companyName && secondFormData.address && secondFormData.city && secondFormData.postCode && secondFormData.country && secondFormData.recruitCountry 
     ) {
-
-      axiosPublic.post('/registrations', formData
-      )
+      axiosPublic.post('/registrations', { 
+        firstName: firstFormData?.firstName, 
+        lastName: firstFormData?.lastName, 
+        email: firstFormData?.email, 
+        mobileNo: firstFormData?.mobileNo, 
+        password: firstFormData?.password, 
+        companyDetails: secondFormData, 
+        image:fileData && fileData,
+        time: time })
         .then(res => {
           if (res.status === 200) {
             Swal.fire({ position: "top-end", icon: "success", title: "Success", text: `Thank You for submitting your form ${firstFormData?.firstName} ${firstFormData?.lastName}`, showConfirmButton: false, timer: 1500 });
             setTimeout(() => {
-              // location.reload();
+              location.reload();
             }, 2000);
           }
         })
@@ -120,43 +98,8 @@ const ThirdForm = ({ setPageNo, pageNo, setDocuments, firstFormData, secondFormD
     <div>
       {/* <h1 className="text-xl font-semibold  text-gray-500 p-2 text-center">Please upload your portrait</h1> */}
       <div>
-        {/* <input
-         type="file" name="upload" id="upload" placeholder="Drag and drop your pdf file here" onChange={handleFileUpload} onDragEnter={handleDragEnter} onDragLeave={handleDragLeave} onDragOver={handleDragOver} onDrop={handleFileUpload}
-          className={`  rounded-lg w-2/3 bg-gray-100 mx-10 p-10 px-5 my-5  ${isDragging ? " border-purple-400 " : " border-black "}`} /> */}
-
-        <form
-          onSubmit={(e)=>submitForm(e)}
-          className="bg-white px-10 py-10 mt-4"
-          action="/upload" method="POST" encType="multipart/form-data"
-        >
-          <h1 className="md:text-lg text-base font-semibold capitalize mb-4 text-primary-color tracking-wider">
-            Share your Expense details
-          </h1>
-
-          {/* length checking label */}
-
-
-          <div className="rounded-md border border-gray-200">
-
-
-
-          </div>
-
-          <h1 className="md:text-lg text-base font-semibold capitalize my-4 text-primary-color tracking-wider">
-            Share your Expense Documents
-          </h1>
-
-          {/* FILE UPLOAD */}
-          <FileUpload setFileData={setFileData} fileData={fileData} />
-
-          {/* submit button */}
-          <div className="mt-5 flex justify-end">
-
-            <div type="submit" className="flex gap-20">
-              <button onClick={(e) => submitForm(e)} className="  w-full lg:ml-auto btn-primary text-base lg:text-lg text-white bg-[#7367f0] hover:bg-[#675dd8] rounded-xl p-2 my-10 font-bold">Submit</button>
-            </div>
-          </div>
-        </form>
+        <input type="file" name="upload" id="upload" placeholder="Drag and drop your pdf file here" onChange={(e)=>setFileData(e.target.files)}
+          className={`  rounded-lg w-2/3 bg-gray-100 mx-10 p-10 px-5 my-5  ${isDragging ? " border-purple-400 " : " border-black "}`} />
 
         {/* <div className='overflow-scroll   '>
           {fileData &&
@@ -175,7 +118,9 @@ const ThirdForm = ({ setPageNo, pageNo, setDocuments, firstFormData, secondFormD
           }
         </div> */}
 
-
+        <div className="flex gap-20">
+          <button onClick={(e) => submitForm(e)} className="  w-full lg:ml-auto btn-primary text-base lg:text-lg text-white bg-[#7367f0] hover:bg-[#675dd8] rounded-xl p-2 my-10 font-bold">Submit</button>
+        </div>
 
       </div>
     </div>
