@@ -51,7 +51,7 @@ const FirstForm = ({   setFirstFormData, selected, setSelected, errors, setError
             </div>
             <Form2 int={3} label='Email' state={email} setState={setEmail} placeholder='Email' selected={selected} setSelected={setSelected} errors={errors} setErrors={setErrors} type={'email'} />
             <Form2 int={4} label='Mobile No:' state={mobileNo} setState={setMobileNO} placeholder='+8801---------' selected={selected} setSelected={setSelected} errors={errors} setErrors={setErrors} type={'number'} />
-            <Form1 int={55} label='Whatsapp No:' state={whatsAppNo} setState={setWhatsAppNO} placeholder='+8801---------' selected={selected} setSelected={setSelected} errors={errors} setErrors={setErrors} type={'number'} />
+            <Form1 int={51} label='Whatsapp No:' state={whatsAppNo} setState={setWhatsAppNO} placeholder='+8801---------' selected={selected} setSelected={setSelected} errors={errors} setErrors={setErrors} type={'number'} />
 
             <div className="lg:flex  gap-5">
                 <div className="form-control w-full">
@@ -60,7 +60,7 @@ const FirstForm = ({   setFirstFormData, selected, setSelected, errors, setError
                         <input onFocus={() => setSelected(6)} onBlur={() => {
                             setSelected(0)
                             !password && addError(6)
-                        }} className="w-full   placeholder:text-xl text-xl" onChange={e => {
+                        }} className="w-full   placeholder:text-base text-xl" onChange={e => {
                             setSelected(6)
                             setErrors((prevItems) => prevItems.filter(item => item !== 6))
                             setPassword(e.target.value)
@@ -79,7 +79,7 @@ const FirstForm = ({   setFirstFormData, selected, setSelected, errors, setError
                         <input onFocus={() => setSelected(7)} onBlur={() => {
                             setSelected(0)
                             !rePassword && addError(7)
-                        }} className="w-full   placeholder:text-xl text-xl" onChange={e => {
+                        }} className="w-full   placeholder:text-base text-xl" onChange={e => {
                             setSelected(7)
                             setErrors((prevItems) => prevItems.filter(item => item !== 7))
                             setRePassword(e.target.value)
