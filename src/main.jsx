@@ -4,13 +4,11 @@ import './index.css'
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import Registration2 from './Components/Registration2/Registration2.jsx';
 import Home from './Components/Home/Home.jsx';
-import LogIn from './Components/Authentication/LogIn.jsx';
 import AuthProvider from './Components/Authentication/AuthProvider.jsx';
-import RegistrationList from './Components/RegistrationList/RegistrationList.jsx';
-import SingleRegistration from './Components/RegistrationList/SingleRegistration.jsx';
-import LandingPage from './Components/Home/LandingPage.jsx';
-import PrivateRoute from './Components/Hooks/PrivateRoutes.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import ReadDoc from './Components/ReadDoc/ReadDoc.jsx';
+import LogIn from './Components/Authentication/LogIn.jsx';
+import PrivateRoute from './Components/Hooks/PrivateRoutes.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,14 +25,14 @@ const router = createBrowserRouter([
         // element:<RegistrationDummy/>
         // element: <Registration2 />,
       // },
-      // {
-      //   path: 'logIn',
-      //   element: <LogIn />
-      // },
-      // {
-      //   path: 'registrations',
-      //   element: <PrivateRoute><RegistrationList /></PrivateRoute>
-      // },
+      {
+        path: 'logIn',
+        element: <LogIn />
+      },
+      {
+        path: 'registrations',
+        element:  <PrivateRoute><ReadDoc/></PrivateRoute>
+      },
       // {
       //   path: '/singleRegistration/:id',
       //   element: <PrivateRoute><SingleRegistration /></PrivateRoute>

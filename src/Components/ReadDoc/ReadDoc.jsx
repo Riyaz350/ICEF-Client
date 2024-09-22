@@ -1,11 +1,13 @@
 import { useEffect } from "react";
-import RegistrationsRow from "./RegistrationsRow";
 import useRegistrations from "../Hooks/useRegistrations";
 import ExportData from "./ExportData";
+import DocRow from "./DocRow";
 
-const RegistrationList = () => {
+const ReadDoc = () => {
     const [registrations, refetch] = useRegistrations()
     const regArray = [...registrations].reverse()
+
+    console.log(registrations)
     useEffect(() => {
         const intervalId = setInterval(() => {
             refetch();
@@ -20,20 +22,20 @@ const RegistrationList = () => {
         <div>
 
             <div>
-                {registrations ? <div className=" overflow-scroll no-scrollbar bg-white max-w-5xl mx-auto shadow-lg  min-h-screen">
+                {registrations ? 
+                <div className=" overflow-scroll no-scrollbar bg-white max-w-5xl mx-auto shadow-lg  min-h-screen">
 
                     < div className="   bg-white w-full py-5 " >
                         <div>
                             <ExportData registrations={registrations} />
                         </div>
                         <table className="table w-full overflow-x-scroll">
-                            {/* head */}
                             <thead>
                                 <tr className="text-xl font-medium">
-                                    <th>APPLICATION ID</th>
-                                    <th>STUDENT NAME</th>
-                                    <th>Counsellor</th>
-                                    <th>DATE ADDED</th>
+                                    <th>Counsellor NAME</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Time</th>
                                     <th>ACTION</th>
                                 </tr>
                             </thead>
@@ -41,7 +43,7 @@ const RegistrationList = () => {
                             {regArray ?
                                 <tbody className="">
                                     {
-                                        regArray.map(registration => <RegistrationsRow key={registration._id} registration={registration} ></RegistrationsRow>)
+                                        regArray.map(registration => <DocRow key={registration._id} registration={registration} ></DocRow>)
                                     }
                                 </tbody> :
                                 <span className="loading loading-spinner loading-lg"></span>
@@ -52,11 +54,12 @@ const RegistrationList = () => {
 
                 </div > :
                     <div className=" max-w-5xl mx-auto  min-h-screen  bg-white flex items-center justify-center">
-                        <span className=" loading loading-spinner loading-lg"></span>
-                    </div>}
+                    <span className=" loading loading-spinner loading-lg"></span>
+                </div>
+                    }
             </div>
         </div>
     );
 };
 
-export default RegistrationList;
+export default ReadDoc;
