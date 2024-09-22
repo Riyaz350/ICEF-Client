@@ -6,7 +6,7 @@ const useRegistrations = () => {
     const {data: registrations=[], refetch, isLoading:loading} =useQuery({
         queryKey:['registrations'],
         queryFn: async()=>{
-                const res = await axiosPublic.get(`/registrations`)
+                const res = await axiosPublic.get(`/registrationsData`)
                 return res.data
         }
     })
