@@ -48,7 +48,6 @@ const LogIn = () => {
 
             })
             .catch((error) => {
-                console.log(error)
                 if (error) {
                     Swal.fire({ position: "top-end", icon: "error", title: "Wrong Credentials", showConfirmButton: false, timer: 1500 });
                 }

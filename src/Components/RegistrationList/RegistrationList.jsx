@@ -6,8 +6,6 @@ import ExportData from "./ExportData";
 const RegistrationList = () => {
     const [registrations, refetch] = useRegistrations()
     const regArray = [...registrations].reverse()
-
-    console.log(registrations)
     useEffect(() => {
         const intervalId = setInterval(() => {
             refetch();

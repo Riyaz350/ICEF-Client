@@ -9,9 +9,7 @@ const RegistrationsRow = ({registration}) => {
     const handleSearch=()=>{
        setSelectedRegistration(registration)
     }
-    // const handleDelete=()=>{
-    //     console.log('done')
-    // }
+
     
 
     return (
@@ -23,7 +21,6 @@ const RegistrationsRow = ({registration}) => {
             <th>
                 <ul className=" flex justify-center text-xl">
                     <Link to={`/singleRegistration/${registration?._id}`}   className="cursor-pointer" ><CiEdit /></Link>
-                    {/* <li className="cursor-pointer" onClick={()=>handleDelete(registration._id)}><RiDeleteBin6Line /></li> */}
                 </ul>
             </th>
             

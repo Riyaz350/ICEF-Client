@@ -2,14 +2,14 @@
 const Form1 = ({ int, label, state, setState, placeholder, selected, setSelected, errors, setErrors,type, value }) => {
 
     const Field = () => {
-        return (<div className="label">
+        return (<div className="label text-xl">
             <span className="label-text text-red-500">This field is required</span>
         </div>)
     }
 
     const Label = ({ text, ind }) => {
-        return (<div className="label">
-            <span className={errors.includes(parseInt(ind)) ? "label-text text-red-500" : selected == parseInt(ind) ? "label-text text-purple-500" : "label-text text-black-500"}>{text}</span>
+        return (<div className="label text-xl">
+            <span className={errors.includes(parseInt(ind)) ? " text-red-500" : selected == parseInt(ind) ? " text-purple-500" : " text-black-500"}>{text}</span>
         </div>)
     }
     const addError = (e) => {
@@ -25,7 +25,7 @@ const Form1 = ({ int, label, state, setState, placeholder, selected, setSelected
                     setSelected(int)
                     setErrors((prevItems) => prevItems.filter(item => item !== int))
                     setState(e.target.value)
-                }} value={value && value } type={type} placeholder={placeholder} className={`p-2 outline-none  rounded-lg w-full  `} />
+                }} value={value && value } type={type} placeholder={placeholder} className={`p-2 outline-none h-[60px] placeholder:text-xl text-xl rounded-lg w-full  `} />
             </div>
             {errors.includes(int) ? <Field /> : <></>}
         </div>
