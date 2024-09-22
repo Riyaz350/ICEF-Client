@@ -7,7 +7,7 @@ const useRegistrations = () => {
         queryKey:['registrations'],
         queryFn: async()=>{
                 const res = await axiosPublic.get(`/registrationsData`)
-                return res.data
+                return res.data.data
         }
     })
     return [registrations, refetch, loading]

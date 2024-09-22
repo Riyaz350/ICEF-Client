@@ -5,6 +5,7 @@ import DocRow from "./DocRow";
 
 const ReadDoc = () => {
     const [registrations, refetch] = useRegistrations()
+    console.log(registrations)
     const regArray = [...registrations].reverse()
 
     console.log(registrations)
@@ -27,7 +28,7 @@ const ReadDoc = () => {
 
                     < div className="   bg-white w-full py-5 " >
                         <div>
-                            <ExportData registrations={registrations} />
+                            {/* <ExportData registrations={registrations} /> */}
                         </div>
                         <table className="table w-full overflow-x-scroll">
                             <thead>
