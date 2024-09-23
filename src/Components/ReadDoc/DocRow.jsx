@@ -82,23 +82,7 @@ const DocRow = ({ registration }) => {
                 <span className="font-bold pr-2">Recruits from:</span>
                 {registration?.companyDetails.recruitCountry}
               </p>
-              <div>
-                <img
-                  src={`${import.meta.env.VITE_IMG_URL}/${
-                    registration.file.name
-                  }`}
-                  alt=""
-                />
-              </div>
-              {/* DOWNLOAD button  */}
-              <a
-                href={`${import.meta.env.VITE_IMG_DOWNLOAD_URL}/${
-                  registration.file.name
-                }`}
-                download
-              >
-                <button className="btn btn-success">Download</button>
-              </a>
+              
             </div>
             <div className="modal-action">
               <form method="dialog">
