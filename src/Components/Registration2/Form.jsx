@@ -169,6 +169,7 @@ const Form = () => {
                             </div>
                             <div className="border-purple-500">
                                 <input
+                                    required
                                     name="email"
                                     placeholder="example@gmail.com"
                                     className={inputClass}
@@ -182,6 +183,7 @@ const Form = () => {
                             </div>
                             <div className="border-purple-500">
                                 <input
+                                    required
                                     name="phone"
                                     placeholder="12345"
                                     className={inputClass}
@@ -208,6 +210,7 @@ const Form = () => {
                             </div>
                             <div className="border-purple-500">
                                 <input
+                                    required
                                     name="password"
                                     placeholder="password"
                                     className={inputClass}
@@ -221,6 +224,7 @@ const Form = () => {
                         <h3 className="text-xl mt-4 font-bold">Company Details</h3>
                         <div className={`form-control w-full px-2`}>
                             <input
+                                required
                                 name="company"
                                 placeholder="Company Name"
                                 className={inputClass}
@@ -237,6 +241,7 @@ const Form = () => {
                         </div>
                         <div className={`form-control w-full px-2`}>
                             <input
+                                required
                                 name="address"
                                 placeholder="Address"
                                 className={inputClass}
@@ -245,6 +250,7 @@ const Form = () => {
                         </div>
                         <div className={`form-control w-full px-2`}>
                             <input
+                                required
                                 name="city"
                                 placeholder="City"
                                 className={inputClass}
@@ -253,6 +259,7 @@ const Form = () => {
                         </div>
                         <div className={`form-control w-full px-2`}>
                             <input
+                                required
                                 name="post"
                                 placeholder="Post Code"
                                 className={inputClass}
@@ -261,6 +268,7 @@ const Form = () => {
                         </div>
                         <div className={`form-control w-full px-2`}>
                             <input
+                                required
                                 name="country"
                                 placeholder="Country"
                                 className={inputClass}
@@ -269,6 +277,7 @@ const Form = () => {
                         </div>
                         <div className={`form-control w-full px-2`}>
                             <input
+                                required
                                 name="recruit"
                                 placeholder="Recruit Country"
                                 className={inputClass}
