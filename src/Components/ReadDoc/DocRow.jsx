@@ -14,7 +14,19 @@ const DocRow = ({ registration }) => {
   // const handleDelete=()=>{
   //     console.log('done')
   // }
-  console.log(`${import.meta.env.VITE_IMG_URL}/${registration.file.name}`);
+  //   console.log(`${import.meta.env.VITE_IMG_URL}/${registration.file.name}`);
+  // Format the time into a more human-readable format
+  const formattedTime = new Date(registration?.createdAt).toLocaleString(
+    "en-US",
+    {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    }
+  );
 
   return (
     <tr className="border-b-[1px] font-thin border-gray-300 rounded-lg ">
@@ -31,7 +43,7 @@ const DocRow = ({ registration }) => {
           {registration?.email}
         </p>
       </th>
-      <th className={thStyle}>{registration?.time}</th>
+      <th className={thStyle}>{formattedTime}</th>
       <th>
         {/* Open the modal using document.getElementById('ID').showModal() method */}
         <button
