@@ -6,9 +6,10 @@ import Swal from "sweetalert2";
 const Form = () => {
     const inputClass =
         "border-2 font-medium px-2 outline-none h-[60px] placeholder:text-xl text-xl rounded-lg w-full";
-    const [fileData, setFileData] = useState(null); // For file upload
+    // const [fileData, setFileData] = useState(null);  
     const axiosPublic = useAxiosPublic();
     const formRef = useRef(null); // Ref for the form
+
 
     const submitForm = (e) => {
         e.preventDefault(); // Prevent default form submission behavior
@@ -52,9 +53,9 @@ const Form = () => {
         );
 
         // Append the file to FormData if it exists
-        if (fileData) {
-            formDataObj.append("file", fileData); // Ensure the file is sent with the correct field name
-        }
+        // if (fileData) {
+        //     formDataObj.append("file", fileData); // Ensure the file is sent with the correct field name
+        // }
 
         // Check if file is appended correctly
         console.log("File being sent: ", formDataObj.get("file"));
@@ -78,10 +79,8 @@ const Form = () => {
                         showConfirmButton: false,
                         timer: 1500,
                     });
-
                     formRef.current.reset();
-                    setFileData(null)
-                    
+                    // setFileData(null)
                 }
             })
             .catch((err) => {
@@ -289,14 +288,14 @@ const Form = () => {
                         </div>
                     </div>
                     {/* File Upload */}
-                    <div className=" text-center flex flex-col gap-2 items-center my-5 py-5 border-[2px]">
+                    {/* <div className=" text-center flex flex-col gap-2 items-center my-5 py-5 border-[2px]">
                         <h3 className="text-xl mt-4 font-semibold">Upload File</h3>
                         <input
                             type="file"
                             name="file"
                             onChange={(e) => setFileData(e.target.files[0])}
                         />{" "}
-                    </div>
+                    </div> */}
                     {/* Changed this line */}
                     {/* Submit button */}
                     <div className="mt-5 flex justify-end">
