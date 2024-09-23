@@ -2,7 +2,6 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
-import Registration2 from './Components/Registration2/Registration2.jsx';
 import Home from './Components/Home/Home.jsx';
 import AuthProvider from './Components/Authentication/AuthProvider.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -20,12 +19,6 @@ const router = createBrowserRouter([
         path: '/',
         element: <Form/>
       },
-      // {
-        // path: '/studentForm',
-        // element: <Registration/>
-        // element:<RegistrationDummy/>
-        // element: <Registration2 />,
-      // },
       {
         path: 'logIn',
         element: <LogIn />
@@ -34,11 +27,6 @@ const router = createBrowserRouter([
         path: 'registrations',
         element:  <PrivateRoute><ReadDoc/></PrivateRoute>
       },
-      // {
-      //   path: '/singleRegistration/:id',
-      //   element: <PrivateRoute><SingleRegistration /></PrivateRoute>
-      // }
-
     ]
   },
 ]);

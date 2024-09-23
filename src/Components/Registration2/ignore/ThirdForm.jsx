@@ -2,10 +2,9 @@ import { useEffect, useState } from 'react';
 
 // import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 // import 'react-pdf/dist/esm/Page/TextLayer.css';
-import DocumentViewer from './Viewers/DocumentViewer';
-import useAxiosPublic from '../Hooks/useAxiosPublic';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import Swal from 'sweetalert2';
-import { extractDateTime } from '../Tools/Time';
+import { extractDateTime } from '../../Tools/Time';
 
 const ThirdForm = ({ setPageNo, pageNo, setDocuments, firstFormData, secondFormData, errors, setErrors }) => {
   const [isDragging, setIsDragging] = useState(false);
@@ -100,23 +99,6 @@ const ThirdForm = ({ setPageNo, pageNo, setDocuments, firstFormData, secondFormD
       <div>
         <input type="file" name="upload" id="upload" placeholder="Drag and drop your pdf file here" onChange={(e)=>setFileData(e.target.files)}
           className={`  rounded-lg w-2/3 bg-gray-100 mx-10 p-10 px-5 my-5  ${isDragging ? " border-purple-400 " : " border-black "}`} />
-
-        {/* <div className='overflow-scroll   '>
-          {fileData &&
-            <div className='flex flex-col gap-2'>
-              {fileData.map((data, index) =>
-                <div className='shadow-lg rounded-lg text-xl p-5 bg-white' key={index}>
-
-                  <div>
-                    <h1>{data?.name}</h1>
-                    <DocumentViewer base64String={data?.string} type={data?.type} />
-                  </div>
-
-                </div>
-              )}
-            </div>
-          }
-        </div> */}
 
         <div className="flex gap-20">
           <button onClick={(e) => submitForm(e)} className="  w-full lg:ml-auto btn-primary text-base lg:text-lg text-white bg-[#7367f0] hover:bg-[#675dd8] rounded-xl p-2 my-10 font-bold">Submit</button>

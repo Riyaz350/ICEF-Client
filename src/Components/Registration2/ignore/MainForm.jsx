@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import FirstForm from './FirstForm';
-import SecondForm from './SecondForm';
+import SecondForm from '../SecondForm';
 import ThirdForm from './ThirdForm';
 
 const MainForm = () => {
