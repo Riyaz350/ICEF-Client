@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Banner from "./Banner";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
@@ -8,6 +8,7 @@ const Form = () => {
         "border-2 font-medium px-2 outline-none h-[60px] placeholder:text-xl text-xl rounded-lg w-full";
     const [fileData, setFileData] = useState(null); // For file upload
     const axiosPublic = useAxiosPublic();
+    const formRef = useRef(null); // Ref for the form
 
     const submitForm = (e) => {
         e.preventDefault(); // Prevent default form submission behavior
@@ -77,9 +78,10 @@ const Form = () => {
                         showConfirmButton: false,
                         timer: 1500,
                     });
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 2000);
+
+                    formRef.current.reset();
+                    setFileData(null)
+                    
                 }
             })
             .catch((err) => {
@@ -124,6 +126,7 @@ const Form = () => {
                 </div>
 
                 <form
+                ref={formRef}
                     onSubmit={submitForm}
                     className="bg-white px-10 py-10 mt-4"
                     encType="multipart/form-data"
