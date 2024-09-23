@@ -1,13 +1,24 @@
 import { exportToExcel } from 'react-json-to-excel';
 
 const ExportData = ({registrations}) => {
-    console.log(registrations)
+
+    const formattedTime =(registration)=> new Date(registration?.createdAt).toLocaleString(
+        "en-US",
+        {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        }
+      );
     const data = registrations?.map(registration =>({
-        Name:registration.personalInformation.firstName + " " + registration.personalInformation.lastName,
-        Mobile: registration.personalInformation.mobileNo,
-        Email:registration.personalInformation.email,
-        Whatsapp:registration.personalInformation.whatsappNo,
-        Password:registration.personalInformation.password,
+        Name:registration.firstName + " " + registration.lastName,
+        Mobile: registration.mobileNo,
+        Email:registration.email,
+        Whatsapp:registration.whatsappNo,
+        Password:registration.password,
         CompanyName:registration.companyDetails.companyName,
         Address:registration.companyDetails.address,
         City:registration.companyDetails.city,
@@ -15,7 +26,7 @@ const ExportData = ({registrations}) => {
         PostCode:registration.companyDetails.postcode,
         Country:registration.companyDetails.country,
         RecruitsFromCountry:registration.companyDetails.recruitCountry,
-        Time:registration.time
+        Time:formattedTime(registration)
 
 
     }))

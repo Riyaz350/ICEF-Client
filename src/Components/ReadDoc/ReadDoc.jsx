@@ -23,7 +23,9 @@ const ReadDoc = () => {
         {registrations ? (
           <div className=" overflow-scroll no-scrollbar bg-white max-w-5xl mx-auto shadow-lg  min-h-screen">
             <div className="   bg-white w-full py-5 ">
-              <div>{/* <ExportData registrations={registrations} /> */}</div>
+              <div>
+                <ExportData registrations={registrations} />
+              </div>
               <table className="table w-full overflow-x-scroll">
                 <thead>
                   <tr className="text-xl font-medium">
